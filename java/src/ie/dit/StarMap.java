@@ -89,14 +89,31 @@ public class StarMap extends PApplet
             fill(255);
             text(s.getDisplayName(), x + 20, y);
             
-            
 
         }
     } 
 
+
+    public float map1(float a, float b, float c, float d, float e)
+    {
+        float range1 = c - b;
+        float howFar = a - b;
+
+        float range2 = e - d;
+        
+        return d + (howFar / range1) * range2;
+    }
+
+
     public void mouseClicked()
     {
-            
+            int selected1 = -1;
+            int selected2 = -1;
+
+            for( int i = 0; i < stars.size() ; i++)
+            {
+                Star star = stars.get(i)
+;            }
     }
 
     public void draw()
