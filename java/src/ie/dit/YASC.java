@@ -56,6 +56,7 @@ public class YASC extends PApplet
 
         for(int i = bullets.size() - 1; i >= 0; i--)
         {
+            Bullet b = bullets.get(i);
             b.render();
             b.update();
         }

@@ -37,6 +37,7 @@ public class Bullet
         // pos += forward * speed
         pos.add(PVector.mult(forward, speed));
 
+<<<<<<< HEAD
 
         //killing the bullets after 5 seconds
         alive += yasc.timeDelta;
@@ -45,6 +46,29 @@ public class Bullet
             yasc.bullets.remove(this);
         }
 
+=======
+        if (pos.x < 0)
+        {
+            pos.x = yasc.width;
+        }
+        if (pos.x > yasc.width)
+        {
+            pos.x = 0;
+        }
+        if (pos.y < 0)
+        {
+            pos.y = yasc.height;
+        }
+        if (pos.y > yasc.height)
+        {
+            pos.y = 0;
+        }
+        alive += yasc.timeDelta;
+        if (alive >= 5.0)
+        {
+            yasc.bullets.remove(this);
+        }
+>>>>>>> 7bee48b663957a3dff3b3d4c9923a5bb9373773c
     }
 
     float alive;
