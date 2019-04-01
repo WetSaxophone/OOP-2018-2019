@@ -5,30 +5,22 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class AIShip
+public class AIShip extends GameObject
 {
-    private PVector pos;
-    private PVector forward;
-    private float speed;
-    private float size;
-    private YASC yasc;
-
-    private float rotation;
-
+    float size;
+    private int health = 10;
     private ArrayList<PVector> waypoints = new ArrayList<PVector>(); 
 
     public AIShip(YASC yasc, float x, float y, float speed, float size)
     {
-        this.yasc = yasc;
-        pos = new PVector(x, y);
-        forward = new PVector(0, -1);
-        this.speed = speed;
-        this.size = size;
+       super(yasc, x, y, 0, 5);
+       this.size = size;
 
         for(int i = 0 ; i < 5 ; i ++)
         {
             waypoints.add(new PVector(yasc.random(0, yasc.width), yasc.random(0, yasc.height)));
         }
+
     }
 
     public void render()
@@ -54,6 +46,8 @@ public class AIShip
             yasc.stroke(255, 0, 0);
             yasc.line(a.x, a.y, b.x, b.y);
         }
+        yasc.fill(0);    
+        yasc.text("Health:" + health, pos.x + 25, pos.y);
     }
 
     int current = 0;
@@ -71,35 +65,6 @@ public class AIShip
         }
     }
 
-
-    /**
-     * @return the pos
-     */
-    public PVector getPos() {
-        return pos;
-    }
-
-    /**
-     * @param pos the pos to set
-     */
-    public void setPos(PVector pos) {
-        this.pos = pos;
-    }
-
-    /**
-     * @return the speed
-     */
-    public float getSpeed() {
-        return speed;
-    }
-
-    /**
-     * @param speed the speed to set
-     */
-    public void setSpeed(float speed) {
-        this.speed = speed;
-    }
-
     /**
      * @return the size
      */
@@ -110,24 +75,49 @@ public class AIShip
     /**
      * @param size the size to set
      */
-    
-
-	/**
-	 * @return the yasc
-	 */
-	public YASC getYasc() {
-		return yasc;
-	}
-
-	/**
-	 * @param yasc the yasc to set
-	 */
-	public void setYasc(YASC yasc) {
-		this.yasc = yasc;
-    }
     public void setSize(float size) {
         this.size = size;
     }
 
-    
+    /**
+     * @return the health
+     */
+    public int getHealth() {
+        return health;
+    }
+
+    /**
+     * @param health the health to set
+     */
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    /**
+     * @return the waypoints
+     */
+    public ArrayList<PVector> getWaypoints() {
+        return waypoints;
+    }
+
+    /**
+     * @param waypoints the waypoints to set
+     */
+    public void setWaypoints(ArrayList<PVector> waypoints) {
+        this.waypoints = waypoints;
+    }
+
+    /**
+     * @return the current
+     */
+    public int getCurrent() {
+        return current;
+    }
+
+    /**
+     * @param current the current to set
+     */
+    public void setCurrent(int current) {
+        this.current = current;
+    }
 }
